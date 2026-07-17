@@ -3,7 +3,7 @@ const sheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTGgnH9NrNQ-CR
 
 const searchInput = document.getElementById('searchInput');
 const resultsGrid = document.getElementById('resultsGrid');
-let inventory = []; // This starts empty, we will fill it from the Google Sheet
+let inventory = []; 
 
 // 2. Fetch the data from Google Sheets
 async function loadInventory() {
@@ -11,10 +11,7 @@ async function loadInventory() {
         const response = await fetch(sheetURL);
         const data = await response.text();
         
-        // Convert the CSV text into a JavaScript Array
         inventory = parseCSV(data);
-        
-        // Show the items on the screen
         displayItems(inventory);
     } catch (error) {
         resultsGrid.innerHTML = `<p style="text-align: center; color: red;">Failed to load inventory. Please check your internet connection.</p>`;
@@ -26,24 +23,31 @@ function parseCSV(csvText) {
     const rows = csvText.split('\n');
     const items = [];
     
-    // Start at i = 1 to skip the header row (Name, Category, Description)
     for (let i = 1; i < rows.length; i++) {
-        // Split by comma, but handle potential empty lines
+        // Skip totally empty lines
         if (rows[i].trim() === '') continue;
         
-        // Basic split (Note: avoid using commas inside your descriptions in the Google Sheet)
         const columns = rows[i].split(','); 
+        const name = columns[0] ? columns[0].trim() : '';
+        
+        // THE FIX: If there is no product name, skip this row!
+        if (!name) continue; 
+        
+        // A checked box in Sheets becomes "TRUE". Unchecked becomes "FALSE".
+        const rawStatus = columns[3] ? columns[3].trim().toUpperCase() : 'FALSE';
+        const stockText = (rawStatus === 'TRUE') ? 'In Stock' : 'Out of Stock';
         
         items.push({
-            name: columns[0] ? columns[0].trim() : '',
+            name: name,
             category: columns[1] ? columns[1].trim() : '',
-            desc: columns[2] ? columns[2].trim() : ''
+            desc: columns[2] ? columns[2].trim() : '',
+            status: stockText 
         });
     }
     return items;
 }
 
-// 4. Function to display the items on the screen (Same as before)
+// 4. Function to display the items on the screen
 function displayItems(items) {
     resultsGrid.innerHTML = '';
 
@@ -53,10 +57,15 @@ function displayItems(items) {
     }
 
     items.forEach(item => {
+        // Now it just looks at the perfectly spelled text we generated above
+        const statusClass = (item.status === 'Out of Stock') ? 'out-of-stock' : 'in-stock';
+
         const card = document.createElement('div');
         card.className = 'card'; 
+        
         card.innerHTML = `
             <span style="font-size: 0.8rem; color: #888; text-transform: uppercase;">${item.category}</span>
+            <span class="status-badge ${statusClass}">${item.status}</span>
             <h3 style="margin: 5px 0 10px 0;">${item.name}</h3>
             <p>${item.desc}</p>
         `;
