@@ -3,195 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apna Bazaar - Local Kirana Store</title>
+    <title>Ramnagar Motor & Tractor Spares</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <header id="header">
-        <nav class="navbar">
-            <div class="logo">🛒 Apna Bazaar</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#products">Products</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#testimonials">Reviews</a></li>
+    <header>
+        <nav>
+            <h2>Ramnagar Tractor Spares</h2>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#products">Spare Parts</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
         </nav>
     </header>
 
-    <section id="home" class="hero fade-in">
-        <div class="hero-content">
-            <h1>Your Trusted Neighborhood Kirana, Now Digital.</h1>
-            <p>Bringing premium quality groceries and fresh daily essentials straight to your doorstep.</p>
-            <a href="#products" class="btn btn-primary">Explore Categories</a>
-        </div>
-    </section>
+    <main>
+        <!-- Hero Section -->
+        <section id="about" class="hero">
+            <h1>Reliable Motor & Tractor Parts</h1>
+            <p>Providing high-quality engine components, hydraulics, and electrical spares for local agriculture and transport.</p>
+        </section>
 
-    <section id="about" class="about section-padding fade-in">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Story</h2>
-                <p>Serving the community with trust and transparency.</p>
+        <!-- Products Section -->
+        <section id="products">
+            <h2>Our Inventory</h2>
+            <div class="product-grid">
+                <article class="card">
+                    <h3>⚙️ Engine Components</h3>
+                    <p>Pistons, rings, fuel injectors, and gaskets for all major tractor brands.</p>
+                </article>
+                <article class="card">
+                    <h3>🛢️ Hydraulics</h3>
+                    <p>High-pressure hoses, hydraulic pumps, and lifting cylinders.</p>
+                </article>
+                <article class="card">
+                    <h3>⚡ Electrical & Motors</h3>
+                    <p>Alternators, starter motors, batteries, and heavy-duty wiring.</p>
+                </article>
             </div>
-            <div class="about-content">
-                <p>Established with a mission to provide authentic products at honest prices, our general store has been an integral part of the neighborhood. By moving online, we aim to offer the same reliability with modern convenience, directly supporting local economic growth.</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="products" class="products section-padding bg-light fade-in">
-        <div class="container">
-            <div class="section-title">
-                <h2>What We Have In Store</h2>
-                <p>Carefully sourced everyday items across multiple categories.</p>
-            </div>
-            <div class="grid-container">
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1586201375761-83865001e8ac?auto=format&fit=crop&w=400&q=80" alt="Grocery">
-                    <div class="card-body">
-                        <h3>Grocery</h3>
-                        <p>Premium rice, wheat, pulses, and spices.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1628088062854-d1870b4553da?auto=format&fit=crop&w=400&q=80" alt="Dairy">
-                    <div class="card-body">
-                        <h3>Dairy Products</h3>
-                        <p>Fresh milk, butter, paneer, and dahi daily.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1599490659213-e2b9527bd087?auto=format&fit=crop&w=400&q=80" alt="Snacks">
-                    <div class="card-body">
-                        <h3>Snacks</h3>
-                        <p>Biscuits, namkeens, chips, and chocolates.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=400&q=80" alt="Beverages">
-                    <div class="card-body">
-                        <h3>Beverages</h3>
-                        <p>Cold drinks, juices, tea, and coffee powder.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1584824486509-11459466a14e?auto=format&fit=crop&w=400&q=80" alt="Household">
-                    <div class="card-body">
-                        <h3>Household Essentials</h3>
-                        <p>Detergents, floor cleaners, and dish wash.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=400&q=80" alt="Personal Care">
-                    <div class="card-body">
-                        <h3>Personal Care</h3>
-                        <p>Soaps, shampoos, toothpaste, and hair oils.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        <!-- Native HTML Contact Form -->
+        <section id="contact">
+            <h2>Request a Part</h2>
+            <form id="part-request-form">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" required>
 
-    <section id="services" class="services section-padding fade-in">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Services</h2>
-                <p>Why our neighborhood chooses us.</p>
-            </div>
-            <div class="grid-container services-grid">
-                <div class="service-box">📦 Home Delivery</div>
-                <div class="service-box">📱 UPI Payment Accepted</div>
-                <div class="service-box">⭐ Quality Products</div>
-                <div class="service-box">💰 Affordable Prices</div>
-                <div class="service-box">🤝 Friendly Customer Service</div>
-            </div>
-        </div>
-    </section>
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
 
-    <section id="gallery" class="gallery section-padding bg-light fade-in">
-        <div class="container">
-            <div class="section-title">
-                <h2>Store Gallery</h2>
-            </div>
-            <div class="grid-container gallery-grid">
-                <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?auto=format&fit=crop&w=400&q=80" alt="Aisle 1" class="gallery-img">
-                <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=400&q=80" alt="Aisle 2" class="gallery-img">
-                <img src="https://images.unsplash.com/photo-1578916171728-46686eac8d58?auto=format&fit=crop&w=400&q=80" alt="Aisle 3" class="gallery-img">
-            </div>
-        </div>
-    </section>
+                <label for="part">Part Description:</label>
+                <textarea id="part" name="part" rows="3" required></textarea>
 
-    <section id="testimonials" class="testimonials section-padding fade-in">
-        <div class="container">
-            <div class="section-title">
-                <h2>Customer Reviews</h2>
-            </div>
-            <div class="grid-container">
-                <div class="review-card">
-                    <p>"Always fresh items and they deliver so fast. Highly recommended for daily needs!"</p>
-                    <h4>- Rahul S.</h4>
-                </div>
-                <div class="review-card">
-                    <p>"The UPI payment option and clean store make my shopping experience great every time."</p>
-                    <h4>- Priya M.</h4>
-                </div>
-                <div class="review-card">
-                    <p>"Very friendly owner and they always have exactly what I am looking for."</p>
-                    <h4>- Amit K.</h4>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="contact section-padding bg-light fade-in">
-        <div class="container">
-            <div class="section-title">
-                <h2>Visit or Order</h2>
-            </div>
-            <div class="contact-wrapper grid-container" style="grid-template-columns: 1fr 1fr;">
-                <div class="contact-info">
-                    <p><strong>Address:</strong> [Main Market Area, Lalitpur, Uttar Pradesh]</p>
-                    <p><strong>Phone:</strong> +91 XXXXX XXXXX</p>
-                    <p><strong>Email:</strong> contact@apnabazaar.com</p>
-                    <p><strong>Business Hours:</strong> 8:00 AM - 10:00 PM (Mon-Sun)</p>
-                    <div class="map-container">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115408.09799710375!2d78.3371694!3d24.6931754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397ba119c3629e37%3A0xcbc7299a4c84a5db!2sLalitpur%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" width="100%" height="250" style="border:0; border-radius: 12px; margin-top: 15px;" allowfullscreen="" loading="lazy"></iframe>
-                    </div>
-                </div>
-                <form class="contact-form">
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="email" placeholder="Your Email" required>
-                    <input type="tel" placeholder="Phone Number" required>
-                    <textarea rows="4" placeholder="Your Message" required></textarea>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                </form>
-            </div>
-        </div>
-    </section>
+                <button type="submit">Send Request</button>
+            </form>
+        </section>
+    </main>
 
     <footer>
-        <div class="container">
-            <p><strong>Apna Bazaar</strong> - B.Tech Social Internship Project</p>
-            <div class="quick-links">
-                <a href="#home">Home</a> | 
-                <a href="#products">Products</a> | 
-                <a href="#contact">Contact</a>
-            </div>
-            <p class="copyright">© 2026 Apna Bazaar. All Rights Reserved.</p>
-        </div>
+        <p>&copy; 2026 Ramnagar Motor & Tractor Spares. All rights reserved.</p>
+        <p><small>SDG Goal 8 Project Website | Developed by Kunal Kushwaha</small></p>
     </footer>
-
-    <button id="scrollTopBtn">↑</button>
 
     <script src="script.js"></script>
 </body>

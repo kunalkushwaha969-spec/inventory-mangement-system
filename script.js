@@ -1,56 +1,22 @@
-// 1. Mobile Hamburger Menu Toggle
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
+// Wait for the HTML document to fully load before running the script
+document.addEventListener("DOMContentLoaded", () => {
+    
+    // Grab the form element by its ID
+    const form = document.getElementById("part-request-form");
 
-hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-});
+    // Listen for the user hitting the 'Submit' button
+    form.addEventListener("submit", function(event) {
+        
+        // Prevent the default HTML behavior (which refreshes the page)
+        event.preventDefault();
+        
+        // Grab the value the user typed into the 'name' input
+        const customerName = document.getElementById("name").value;
 
-// Close mobile menu when a link is clicked
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
+        // Show a simple success message to the user
+        alert(`Thank you, ${customerName}! Your part request has been received. We will contact you shortly.`);
+
+        // Clear the form fields for the next entry
+        form.reset();
     });
-});
-
-// 2. Scroll to Top Button Logic
-const scrollTopBtn = document.getElementById("scrollTopBtn");
-
-window.onscroll = function() {
-    // Show button when scrolled down 300px
-    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-        scrollTopBtn.style.display = "block";
-    } else {
-        scrollTopBtn.style.display = "none";
-    }
-};
-
-scrollTopBtn.addEventListener("click", function() {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-});
-
-// 3. Fade-In Scroll Animation using Intersection Observer
-const faders = document.querySelectorAll('.fade-in');
-
-const appearOptions = {
-    threshold: 0.15, // Triggers when 15% of the element is visible
-    rootMargin: "0px 0px -50px 0px"
-};
-
-const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
-    entries.forEach(entry => {
-        if (!entry.isIntersecting) {
-            return;
-        } else {
-            entry.target.classList.add('visible');
-            appearOnScroll.unobserve(entry.target); // Stop observing once it has faded in
-        }
-    });
-}, appearOptions);
-
-faders.forEach(fader => {
-    appearOnScroll.observe(fader);
 });
