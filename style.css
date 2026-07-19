@@ -1,21 +1,26 @@
+/* --- 1. Import Premium Google Font --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
 /* --- CSS Variables --- */
 :root {
     --primary-color: #2c3e50;
     --accent-color: #e67e22; 
-    --bg-color: #f4f7f6;
-    --text-color: #2c3e50;
+    --bg-color: #f8fafc; /* Slightly softer white-gray */
+    --text-color: #1e293b;
     --card-bg: #ffffff;
-    --border-color: #dddddd;
+    --border-color: #e2e8f0;
+    --nav-glass: rgba(255, 255, 255, 0.85); /* For frosted glass */
 }
 
 /* --- Dark Mode Variables --- */
 body.dark-theme {
     --primary-color: #4da3ff; 
     --accent-color: #f39c12;
-    --bg-color: #121212;
-    --text-color: #e0e0e0;
-    --card-bg: #1e1e1e;
-    --border-color: #333333;
+    --bg-color: #0f172a; /* Deep modern navy-black */
+    --text-color: #f1f5f9;
+    --card-bg: #1e293b;
+    --border-color: #334155;
+    --nav-glass: rgba(15, 23, 42, 0.85); /* Dark frosted glass */
 }
 
 /* --- Global Reset & Typography --- */
@@ -23,7 +28,8 @@ body.dark-theme {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: system-ui, -apple-system, sans-serif;
+    /* 2. Apply Custom Font */
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
@@ -33,44 +39,73 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* --- Fluid Layout Container --- */
-main, header, footer {
+main, footer {
     max-width: 1100px;
     width: 92%;
     margin: 0 auto;
     padding: 20px 0;
 }
 
-/* --- Navigation --- */
+/* --- 3. Glassmorphism Sticky Navigation --- */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: var(--nav-glass);
+    backdrop-filter: blur(12px); /* This creates the frosted glass effect! */
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
 nav {
+    max-width: 1100px;
+    width: 92%;
+    margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid var(--primary-color);
-    padding-bottom: 15px;
+    padding: 15px 0;
     gap: 15px;
-    transition: border-color 0.3s ease;
 }
 
 nav .logo {
     font-size: 1.5rem;
-    font-weight: bold;
+    font-weight: 700;
     color: var(--primary-color);
+    letter-spacing: -0.5px;
     transition: color 0.3s ease;
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 25px;
 }
 
 nav a {
     text-decoration: none;
     color: var(--text-color); 
-    font-weight: bold;
+    font-weight: 600;
+    position: relative;
     transition: color 0.3s ease;
+}
+
+/* Cool animated underline on nav links */
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
 }
 
 nav a:hover {
@@ -82,44 +117,57 @@ nav a:hover {
     background-color: transparent;
     color: var(--primary-color);
     border: 2px solid var(--primary-color);
-    padding: 6px 14px;
-    border-radius: 6px;
+    padding: 6px 16px;
+    border-radius: 20px; /* Pill shape */
     cursor: pointer;
     font-weight: 600;
     font-size: 0.95rem;
     margin-left: 20px; 
-    transition: all 0.2s ease-in-out;
+    transition: all 0.3s ease;
 }
 
 .theme-toggle-nav:hover {
     background-color: var(--primary-color);
     color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
+/* --- Hero Section --- */
 /* --- Hero Section --- */
 .hero {
     text-align: center;
     padding: clamp(60px, 10vh, 120px) 20px; 
-    background-color: var(--primary-color);
-    background-image: linear-gradient(135deg, var(--primary-color), #1a252f); 
+    
+    /* Clean, professional gradient that matches your theme */
+    background: linear-gradient(135deg, var(--primary-color), #1a252f);
+    
     color: white;
-    border-radius: 12px;
+    border-radius: 16px;
     margin: 30px 0 50px 0;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    transition: background-color 0.3s ease;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    transition: background 0.3s ease;
 }
 
 .hero h1 {
     font-size: clamp(2rem, 5vw, 3.5rem); 
     margin-bottom: 15px;
     line-height: 1.2;
+    font-weight: 700;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    font-weight: 300;
+    opacity: 0.9;
 }
 
 /* --- Product Grid --- */
 section h2 {
     text-align: center;
     margin-bottom: 30px;
-    font-size: 2rem;
+    font-size: 2.2rem;
+    font-weight: 700;
 }
 
 .product-grid {
@@ -129,11 +177,13 @@ section h2 {
     margin-bottom: 60px;
 }
 
+/* --- 4. Smoother Floating Cards --- */
 .card {
     background: var(--card-bg);
     padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    border-radius: 12px; /* Softer corners */
+    /* Much softer, widespread shadow */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.04); 
     border-top: 4px solid var(--accent-color);
     border-bottom: 1px solid var(--border-color);
     border-left: 1px solid var(--border-color);
@@ -142,95 +192,86 @@ section h2 {
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
 }
 
-/* --- Form Styles --- */
-#contact {
-    margin-bottom: 60px;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    background: var(--card-bg);
-    padding: 40px;
-    border-radius: 8px;
-    max-width: 600px; 
-    margin: 0 auto; 
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    border: 1px solid var(--border-color);
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-}
-
-input, textarea {
+/* --- 5. Premium Search Input --- */
+#searchInput {
     width: 100%;
-    padding: 12px;
-    background-color: var(--bg-color);
+    padding: 16px 20px;
+    background-color: var(--card-bg);
     color: var(--text-color);
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    font-size: 1rem;
-    transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
 }
 
-input:focus, textarea:focus {
-    border-color: var(--accent-color);
+#searchInput:focus {
+    border-color: var(--primary-color);
     outline: none;
+    /* Soft glowing focus ring */
+    box-shadow: 0 0 0 4px rgba(44, 62, 80, 0.15); 
 }
 
+/* --- Form/Buttons (fallback if used) --- */
 button {
     background-color: #25D366; 
     color: white;
     padding: 15px;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 1.1rem;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
+    font-weight: 700;
+    transition: all 0.3s ease;
 }
 
 button:hover {
     background-color: #128C7E;
+    transform: translateY(-2px);
 }
 
 /* --- Footer --- */
 footer {
     text-align: center;
     border-top: 1px solid var(--border-color);
-    padding-top: 20px;
+    padding-top: 25px;
+    padding-bottom: 25px;
     margin-top: 40px;
-    font-size: 0.9em;
+    font-size: 0.95em;
+    font-weight: 300;
     color: var(--text-color);
     transition: border-color 0.3s ease, color 0.3s ease;
 }
 
 /* --- Status Badges --- */
 .status-badge {
-    font-size: 0.85rem;
-    font-weight: bold;
-    padding: 4px 8px;
-    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 6px 10px;
+    border-radius: 6px;
     margin-left: 10px;
+    letter-spacing: 0.5px;
 }
 
 .in-stock {
-    background-color: #e6f4ea;
-    color: #1e8e3e;
+    background-color: rgba(40, 167, 69, 0.15);
+    color: #28a745;
 }
 
 .out-of-stock {
-    background-color: #fce8e6;
-    color: #d93025;
+    background-color: rgba(220, 53, 69, 0.15);
+    color: #dc3545;
 }
+
 /* Base animation state (hidden) */
 .scroll-hidden {
   opacity: 0;
   transform: translateY(30px);
-  transition: all 0.6s cubic-bezier(0.5, 0, 0, 1);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 /* Active animation state (visible) */
@@ -238,10 +279,3 @@ footer {
   opacity: 1;
   transform: translateY(0);
 }
-
-/* Staggered delay for your inventory grid */
-.product-card:nth-child(1) { transition-delay: 100ms; }
-.product-card:nth-child(2) { transition-delay: 200ms; }
-.product-card:nth-child(3) { transition-delay: 300ms; }
-.product-card:nth-child(4) { transition-delay: 400ms; }
-/* Keep adding nth-child delays if you have more cards per row */
